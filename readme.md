@@ -1,92 +1,84 @@
+🛠 CodeHealer – AI-Powered Python Debugging Assistant
+
+CodeHealer is an intelligent transformer-based system designed to automatically detect and correct Python code errors.
+It combines modern NLP techniques with sequence-to-sequence modeling to build a context-aware automated debugging assistant.
+
 📌 Overview
 
-This project leverages state-of-the-art transformer architectures to build an automated debugging assistant for Python scripts.
+Debugging is one of the most time-consuming tasks in software development. CodeHealer reduces this friction by:
 
-The system identifies:
+Detecting syntax errors
 
-Syntax errors
+Identifying logical inconsistencies
 
-Logical inconsistencies
+Recognizing structural code issues
 
-Code structure issues
+Generating context-aware corrections
 
-It then generates context-aware corrections to improve code reliability and reduce manual debugging effort.
+Instead of just flagging errors, the system rewrites faulty code into a corrected, executable version, improving reliability and developer productivity.
 
-🧠 Core Technologies
+🧠 Model Architecture
+
+The system is built using transformer-based deep learning models specialized for conditional text generation.
+
 🔹 Transformers Library
 
-A powerful NLP toolkit used to load and fine-tune pre-trained language models for text generation and sequence transformation tasks.
+Utilized for loading and fine-tuning pre-trained language models optimized for sequence transformation tasks.
 
 🔹 T5ForConditionalGeneration
 
-A transformer-based sequence-to-sequence model used for conditional text generation.
-In this project, it generates corrected Python code based on erroneous input prompts.
+A powerful sequence-to-sequence architecture that treats error correction as a text-to-text generation problem.
+Input: Erroneous Python code
+Output: Corrected Python code
 
 🔹 RobertaTokenizerFast
 
-A high-performance tokenizer used to efficiently process Python code inputs into model-compatible tokens.
+Efficient subword tokenizer for transforming raw code into model-readable tokens while preserving structural meaning.
 
-⚙️ System Workflow
+⚙️ How It Works
 
-1️⃣ Input Python script (possibly containing errors)
-2️⃣ Tokenization using RobertaTokenizerFast
-3️⃣ Model inference using T5ForConditionalGeneration
-4️⃣ Error-aware code generation
-5️⃣ Output corrected Python code
+User submits Python code
 
-🎯 Key Features
+Code is tokenized using RobertaTokenizerFast
 
-Automated syntax correction
+Transformer model performs contextual analysis
 
-Logical error identification
+T5 generates corrected code sequence
 
-Context-aware code rewriting
+Clean, optimized Python script is returned
 
-High accuracy transformer-based inference
+The system understands both syntactic patterns and contextual logic flow.
 
-Reduced manual debugging time
+🎯 Key Capabilities
 
-🧪 Technologies Used
+✔ Automatic syntax correction
+✔ Logical error refinement
+✔ Context-aware rewriting
+✔ Sequence-to-sequence code transformation
+✔ Reduced debugging effort
+✔ Scalable model inference pipeline
+
+🧪 Tech Stack
 
 Python
 
 Hugging Face Transformers
 
-T5 Model
+T5 Model Architecture
 
 RobertaTokenizerFast
 
-PyTorch / TensorFlow (depending on implementation)
+PyTorch
 
-🚀 Applications
+🚀 Use Cases
 
-AI-powered coding assistants
-
-Automated code review systems
-
-Developer productivity tools
-
-Educational coding platforms
+AI-based coding assistants
 
 Intelligent IDE extensions
 
-📊 Engineering Highlights
+Automated code review systems
+<img width="778" height="417" alt="image" src="https://github.com/user-attachments/assets/cace7eab-37b7-4b3e-84b5-83d3be70163f" />
 
-Sequence-to-sequence model fine-tuning
+Educational programming platforms
 
-NLP applied to source code understanding
-
-Large-scale dataset preprocessing
-
-Efficient tokenization and inference pipeline
-
-🔮 Future Improvements
-
-Real-time IDE integration
-
-Support for multiple programming languages
-
-Reinforcement learning-based correction ranking
-
-Large-scale evaluation benchmarking
-<img width="778" height="417" alt="image" src="https://github.com/user-attachments/assets/8966ed10-3046-481b-8a07-7b90c434954d" />
+Developer productivity tools
