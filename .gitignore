@@ -1,0 +1,49 @@
+# Virtual environments
+venv/
+env/
+models/
+datasets/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# ML models
+*.safetensors
+*.pt
+*.pth
+*.bin
+
+# Large datasets
+*.json
+*.csv
+
+# System files
+.DS_Store
+Thumbs.db
+# Virtual environment
+venv/
+env/
+
+# Models
+model/
+*.safetensors
+*.pt
+*.pth
+*.bin
+
+# Large data
+problem_descriptions/
+
+# Documents
+*.pptx
+*.pdf
+*.jpg
+*.png
+
+# Text backups
+*.txt
+
+# Python cache
+__pycache__/
+*.pyc

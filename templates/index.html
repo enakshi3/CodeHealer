@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="styles.css">
+    <title>Python Code Healer</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Python Code Healer</h1>
+        <form id="codeForm">
+            <label for="code">Input Code:</label>
+            <p></p>
+            <textarea id="code" name="code" rows="10" cols="50"></textarea>
+            <br>
+            <label for="error">Error Message:</label>
+            <p></p>
+            <textarea id="error" name="error" rows="2" cols="50"></textarea>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <h2>Suggested Code:</h2>
+        <div id="loading" style="display: none;">
+            <div class="loader"></div>
+        </div>
+        <pre id="suggestions"></pre>
+        <button id="copyButton" style="display: none;">Copy to Clipboard</button>
+    </div>
+    <script>
+        document.getElementById('codeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const code = document.getElementById('code').value;
+            const error = document.getElementById('error').value;
+
+            document.getElementById('loading').style.display = 'block';
+
+            fetch('/correct_code', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ code: code, error: error })
+            })
+            .then(response => response.json())
+            .then(data => {
+                displaySuggestions(data.suggestions);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                document.getElementById('loading').style.display = 'none';
+            });
+        });
+
+        function displaySuggestions(suggestions) {
+            const suggestionsPre = document.getElementById('suggestions');
+            suggestionsPre.innerHTML = suggestions.map(suggestion => `<code>${suggestion}</code>`).join('\n\n');
+            document.getElementById('copyButton').style.display = 'block';
+        }
+
+        document.getElementById('code').addEventListener('keydown', function(event) {
+            if (event.key === 'Tab') {
+                event.preventDefault();
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
+                this.value = this.value.substring(0, start) + '    ' + this.value.substring(end);
+                this.selectionStart = this.selectionEnd = start + 4;
+            }
+        });
+
+        document.getElementById('copyButton').addEventListener('click', function() {
+            const suggestions = document.getElementById('suggestions').innerText;
+            navigator.clipboard.writeText(suggestions).then(() => {
+            }, (err) => {
+                console.error('Could not copy text: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
